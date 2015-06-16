@@ -116,3 +116,18 @@ Les __22__ processus présents dans CMMI-DEV couvrent toutes les activités néc
 #### Analyse causale
 
 #### Amélioration de la performance des processus
+
+## Architecture CMMI
+
+### Exemple : Planification de projet
+
+__Activités__ :
+
+- Déterminer les tâches : Décomposer le projet (_WBS_ : Work Breakdown Structure)
+- Identifier les ressources : Monter une équipe
+- Faire une estimation (de charge)
+- Faire un planning (date de début, fin, jalons)
+- Faire le budget
+- Identifier la logistique (moyens, locaux ...)
+- Modalités de pilotage
+- Planifier les formations
