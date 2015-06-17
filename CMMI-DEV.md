@@ -67,55 +67,77 @@ Les __22__ processus présents dans CMMI-DEV couvrent toutes les activités néc
 
 ### Niveau 2 (7 processus)
 
-#### Planification
+#### Planification (PP)
 
-#### Suivi de projet
+#### Suivi de projet (PMC)
 
-#### Gestion de la sous-traitance
+Project Management and Control
 
-#### Gestion des exigences
+#### Gestion de la sous-traitance (SAM)
 
-#### Gestion de la qualité
+Suplier Agreement Management
+
+#### Gestion des exigences (REQM)
+
+#### Gestion de la qualité (PPQA)
 
 #### Mesure et analyse de mesure
 
-#### Gestion de configuration
+#### Gestion de configuration (CA)
 
 ### Niveau 3 (11 processus)
 
-#### Conception et développement
+#### Conception et développement (TS)
 
-#### Intégration
+Technical Solution
 
-#### Développement des exigences
+#### Intégration (PI)
 
-#### Prise de décision
+#### Développement des exigences (RD)
 
-#### Vérification - Confrontation aux exigences
+Requirement Developpement
 
-#### Validation - Confrontation aux besoins
+#### Prise de décision (DAR)
 
-#### Définition des processus
+#### Vérification - Confrontation aux exigences (VAR)
 
-#### Amélioration des processus
+#### Validation - Confrontation aux besoins (VAL)
 
-#### Formation
+#### Définition des processus (OPD)
 
-#### Gestion des risques
+Organization Process Definition
 
-#### Gestion de projet intégré
+#### Amélioration des processus (OPF)
+
+Organization Process Focus
+
+#### Formation (OT)
+
+Organization trainning
+
+#### Gestion des risques (RSKM)
+
+Risk Management
+
+#### Gestion de projet intégré (IPM)
+
+Integrated Project Management
 
 ### Niveau 4 (2 processus)
 
-#### Gestion quantitative des projets
+#### Gestion quantitative des projets (QPM)
 
-#### Gestion de la performance des processus
+#### Gestion de la performance des processus (OPP)
+
+Organization Process Performance
 
 ### Niveau 5 (2 processus)
 
-#### Analyse causale
+#### Analyse causale (CAR)
 
-#### Amélioration de la performance des processus
+#### Amélioration de la performance des processus (OPM)
+
+Organization Process Management
 
 ## Architecture CMMI
 
@@ -131,3 +153,53 @@ __Activités__ :
 - Identifier la logistique (moyens, locaux ...)
 - Modalités de pilotage
 - Planifier les formations
+
+### Architecture standard 
+
+Les processus sont représentés de la manière suivante dans CMMI : 
+
+ 1. Intention (Définition)
+ 5. Objectifs
+	 1. Objectifs Génériques
+	 2. Objectifs Spécifiques
+ 3. Produits d'activité (Paramètres de sortie)
+ 4. Références entre domaine de processus (Liens avec d'autres processus)
+ 5. Pratiques (Liste des activités)
+	 1. Pratiques génériques (Applicables à tous les processus)
+	 2. Pratiques spécifiques (Applicable au processus)
+	 3. Sous pratiques (Liste des activités pour une activité mère)
+ 6. Exemples
+ 7. Remarques
+
+````csharp
+namespace fr.eni.msiisi.4a.model.cmmi{
+
+	interface Target{}
+	class GenericTarget : Target{}
+	class SpecificTarget : Target{}
+	
+	interface Practice{}
+	interface HightLevelPractice : Practice { List<Practice> SubPractices {get;set;}; };
+	
+	class GenericPractice : Practice{}
+	class SpecificPractice : Practice{}
+	class HightLevelPractice : HightLevelPractice{}
+	
+	class Result{
+		String Description;
+		String Name;
+	}
+	
+	class Process{
+		String Intention;
+		List<Target> Targets;
+		List<Result> ActivityProducts;
+		List<HightLevelPractice> Practices;
+		List<Process> References;
+		List<String> Samples;
+		List<String> Remarks;
+	}
+
+}
+````
+
