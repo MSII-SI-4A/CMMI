@@ -85,7 +85,7 @@ Dans les années 70: Beaucoup de bugs dans les systèmes, première version CMM(
 
 ## Processus
 
-![Les Niveaux](./01dp01.png)
+![Les Niveaux](./niveaux.png)
 
 <table style="width:90%">
 	<thead>
