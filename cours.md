@@ -669,3 +669,44 @@ Dans les années 70: Beaucoup de bugs dans les systèmes, première version CMM(
 		</tr>
 	</tbody>
 </table>
+
+
+### Description d'un processus
+
+1. Intention(Définition)
+2. liens avec les autres processus
+3. Produit d'activité(Paramétres de sorties)
+4. Pratiques (Liste de sous-processus)
+  - Pratiques "Generique" valable pour plusieurs processus
+  - Pratiques "Specifique" lié à un processus
+  - Sous-pratique
+5. Objectifs
+  - Objectifs "Generique" valable pour plusieurs processus
+  - Objectifs "Specifique" lié à un processus
+6. Exemples
+7. Remarques
+
+## Evaluation CMMI
+
+Passage N1 à N2
+Exigence: Mettre en oeuvre 7 domaine de processus (PP/PMC,SAM,MA,PPQA,CM,REQM)
+
+Evaluation sur l'entreprise:
+- Un budget
+- Un évaluateur certifié par S.E.I
+
+## Mise en oeuvre
+
+1. Mode "Projet d'amelioration"
+2. Planification
+
+
+
+# Quelques reponse aux Questions
+
+Maturité: Niveau de mise en oeuvre des processus
+Etude n'est pas une categorie de processus
+22 processus
+Mise en oeuvre du niveau 1 à Niveau 2 : 18 à 24 mois
+Processus de gestion des exigence fait partie de la categorie ingénierie
+CMMI est maintenu par SEI
