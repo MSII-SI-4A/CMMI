@@ -61,6 +61,70 @@ Pourquoi choisir de mettre en œuvre un référentiel de bonnes pratiques ?
  - Offrir une garantie labellisée,
  - Demande du marché.
 
+## Architecture CMMI
+
+### Exemple : Planification de projet
+
+__Activités__ :
+
+- Déterminer les tâches : Décomposer le projet (_WBS_ : Work Breakdown Structure)
+- Identifier les ressources : Monter une équipe
+- Faire une estimation (de charge)
+- Faire un planning (date de début, fin, jalons)
+- Faire le budget
+- Identifier la logistique (moyens, locaux ...)
+- Modalités de pilotage
+- Planifier les formations
+
+### Architecture standard 
+
+Les processus sont représentés de la manière suivante dans CMMI : 
+
+ 1. Intention (Définition)
+ 5. Objectifs (2 ... 3)
+	 1. Objectifs Génériques
+	 2. Objectifs Spécifiques
+ 3. Produits d'activité (Paramètres de sortie)
+ 4. Références entre domaine de processus (Liens avec d'autres processus)
+ 5. Pratiques (Liste des activités)
+	 1. Pratiques génériques (Applicables à tous les processus)
+	 2. Pratiques spécifiques (Applicable au processus)
+	 3. Sous pratiques (Liste des activités pour une activité mère)
+ 6. Exemples
+ 7. Remarques
+
+````csharp
+namespace fr.eni.msiisi.4a.model.cmmi{
+
+	interface Target{}
+	class GenericTarget : Target{}
+	class SpecificTarget : Target{}
+	
+	interface Practice{}
+	interface HightLevelPractice : Practice { List<Practice> SubPractices {get;set;}; };
+	
+	class GenericPractice : Practice{}
+	class SpecificPractice : Practice{} 
+	class HightLevelPractice : HightLevelPractice{}
+	
+	class Result{
+		String Description;
+		String Name;
+	}
+	
+	class Process{
+		String Intention;
+		List<Target> Targets;
+		List<Result> ActivityProducts;
+		List<HightLevelPractice> Practices;
+		List<Process> References;
+		List<String> Samples;
+		List<String> Remarks;
+	}
+
+}
+````
+
 ## Processus CMMI-DEV
 
 Les __22__ processus présents dans CMMI-DEV couvrent toutes les activités nécessaires à la fabrication de systèmes.
@@ -139,67 +203,56 @@ Organization Process Performance
 
 Organization Process Management
 
-## Architecture CMMI
+## Évaluation CMMI
 
-### Exemple : Planification de projet
+Le passage d'un niveau est réalisé au cours d'une évaluation, cette dernière nécessite :
 
-__Activités__ :
+ - Un budget, 
+ - Un évaluateur certifié par le _SEI_,
+ - Une équipe d'évaluation,
+	 - Employés,
+	 - Consultants externes,
+ - Un planning,
+ - Une méthode d'évaluation (_SCAMPI_),
+ - Évaluation sur site,
+	 - Entretiens,
+	 - Preuves
 
-- Déterminer les tâches : Décomposer le projet (_WBS_ : Work Breakdown Structure)
-- Identifier les ressources : Monter une équipe
-- Faire une estimation (de charge)
-- Faire un planning (date de début, fin, jalons)
-- Faire le budget
-- Identifier la logistique (moyens, locaux ...)
-- Modalités de pilotage
-- Planifier les formations
+Il est nécessaire de réunir un certain nombre de conditions, tous les objectifs d'un processus doivent êtres remplis pour que ce dernier soir validé. Il faut que l’ensemble des processus soit validé pour valider le niveau. Pour passer d'un niveau à l'autre il faut :
 
-### Architecture standard 
+ - Niveau 2 : Mettre en œuvre 7 domaines,
+ - Niveau 3 : Mettre en œuvre 18 domaines,
+ - Niveau 4 : Mettre en œuvre 20 domaines,
+ - Niveau 5 : Mettre en œuvre 22 domaines.
 
-Les processus sont représentés de la manière suivante dans CMMI : 
+## Mise en œuvre de CMMI
 
- 1. Intention (Définition)
- 5. Objectifs
-	 1. Objectifs Génériques
-	 2. Objectifs Spécifiques
- 3. Produits d'activité (Paramètres de sortie)
- 4. Références entre domaine de processus (Liens avec d'autres processus)
- 5. Pratiques (Liste des activités)
-	 1. Pratiques génériques (Applicables à tous les processus)
-	 2. Pratiques spécifiques (Applicable au processus)
-	 3. Sous pratiques (Liste des activités pour une activité mère)
- 6. Exemples
- 7. Remarques
-
-````csharp
-namespace fr.eni.msiisi.4a.model.cmmi{
-
-	interface Target{}
-	class GenericTarget : Target{}
-	class SpecificTarget : Target{}
-	
-	interface Practice{}
-	interface HightLevelPractice : Practice { List<Practice> SubPractices {get;set;}; };
-	
-	class GenericPractice : Practice{}
-	class SpecificPractice : Practice{}
-	class HightLevelPractice : HightLevelPractice{}
-	
-	class Result{
-		String Description;
-		String Name;
-	}
-	
-	class Process{
-		String Intention;
-		List<Target> Targets;
-		List<Result> ActivityProducts;
-		List<HightLevelPractice> Practices;
-		List<Process> References;
-		List<String> Samples;
-		List<String> Remarks;
-	}
-
-}
-````
-
+ 1. Passer en mode projet (projet d'amélioration),
+ 2. Planification (PP),
+	 1. Cycle du projet (Cycle en V, Agile...),
+		 1. Définition (des processus),
+		 2. Déploiement (sur le terrain),
+		 3. Bilan,
+	 2. Ressources,
+		 1. Chef de projet (Interne, expérimenté, connaissance de l'entreprise),
+		 2. Équipe projet(Groupe de travail sur les processus),
+		 3. Un expert CMMI,
+		 4. Sponsor (porteur du projet au niveau de la direction),
+	 3. Planning,
+ 3. Modalités de pilotage,
+ 	1. Comité de pilotage,
+ 4. Phase de définition (Par les groupes de travail),
+ 	1. Définir les processus,
+	 	1. Réunions régulières,
+	 	2. Formaliser les processus (Activités, ressources...),
+	 	3. Vérifier, Valider,
+	 	4. Prévoir le déploiement (formation, conduite de changement),
+	 	5. Outillage,
+ 5. Phase de déploiement (faire passer les pratiques sur le terrain),
+	 1. Sélectionner les premiers (projets/acteurs) favorables à la démarche,
+	 2. Procéder par incrément (ordre des processus),
+	 3. Mener la conduite du changement,
+		 1. Communication,
+		 2. Sensibilisation, formation,
+		 3. Implication de la direction,
+		 4. Participation collective. 
